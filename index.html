@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#f9f0eb">
-<title>pTracker</title>
+<title>pCycle</title>
 <link rel="manifest" href="manifest.json" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="pTracker" />
+<meta name="apple-mobile-web-app-title" content="pCycle" />
 <link rel="apple-touch-icon" href="icon-192.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -700,7 +700,7 @@ function LoginScreen({ onLogin, isSetup }) {
 
   return (
     <div className="login-screen">
-      <div className="login-logo">Cycle<span>Track</span></div>
+      <div className="login-logo">p<span>Cycle</span></div>
       <div className="login-tagline">Your personal cycle tracker</div>
 
       {isSetup ? (
@@ -1260,7 +1260,7 @@ function DashboardTab({ dashData, calMap, symptoms, onDataChange, currentMonth, 
   if (!dashData) return (
     <div className="page-content">
       <div className="app-header">
-        <div className="header-logo">Cycle<span>Track</span></div>
+        <div className="header-logo">p<span>Cycle</span></div>
       </div>
       <div className="skeleton skeleton-hero" />
       <div style={{padding:'0 16px',display:'flex',gap:'12px',marginBottom:'16px'}}>
@@ -1324,7 +1324,7 @@ function DashboardTab({ dashData, calMap, symptoms, onDataChange, currentMonth, 
       return (
         <div className="page-content">
           <div className="app-header">
-            <div className="header-logo">Cycle<span>Track</span></div>
+            <div className="header-logo">p<span>Cycle</span></div>
           </div>
           <div className="preg-hero">
             <div style={{position:'relative',zIndex:1}}>
@@ -1356,7 +1356,7 @@ function DashboardTab({ dashData, calMap, symptoms, onDataChange, currentMonth, 
       return (
         <div className="page-content">
           <div className="app-header">
-            <div className="header-logo">Cycle<span>Track</span></div>
+            <div className="header-logo">p<span>Cycle</span></div>
           </div>
           <div className="phase-hero nifas">
             <div className="phase-greeting">Hello, {name}</div>
@@ -1372,7 +1372,7 @@ function DashboardTab({ dashData, calMap, symptoms, onDataChange, currentMonth, 
   return (
     <div className="page-content">
       <div className="app-header">
-        <div className="header-logo">Cycle<span>Track</span></div>
+        <div className="header-logo">p<span>Cycle</span></div>
       </div>
 
       {banners.map((b,i) => (
@@ -2969,7 +2969,7 @@ function ProfileTab({ settings, onDataChange, onShowHelp }) {
 
       {/* ABOUT */}
       <div style={{textAlign:'center',padding:'20px',color:'var(--text-muted)',fontSize:'12px'}}>
-        CycleTrack v1.0 · Built with ❤️
+        pCycle v1.0 · Built with ❤️
       </div>
 
       {/* MODALS */}
@@ -3261,7 +3261,7 @@ const GLOSSARY = [
     badge: 'Algorithm',
     badgeBg: 'var(--cream-dark)',
     badgeColor: 'var(--text-light)',
-    desc: 'Instead of averaging all your cycles equally, CycleTrack uses a moving average of your 3 most recent valid cycles. This means recent patterns carry more weight than older ones, making predictions adapt naturally as your body changes over time.',
+    desc: 'Instead of averaging all your cycles equally, pCycle uses a moving average of your 3 most recent valid cycles. This means recent patterns carry more weight than older ones, making predictions adapt naturally as your body changes over time.',
     example: 'Example: Cycles of 28, 30, 27 days. Moving average = (28+30+27) ÷ 3 = 28 days. A very old cycle of 35 days has no effect.'
   },
   {
@@ -3309,7 +3309,7 @@ const GLOSSARY = [
     badge: 'Fasting',
     badgeBg: 'var(--green-light)',
     badgeColor: 'var(--green)',
-    desc: 'In Islam, days of fasting missed during Ramadan due to menstruation, pregnancy, nursing, or illness must be made up before the next Ramadan. CycleTrack lets you record these debts by year and reason, and track how many days you have completed.',
+    desc: 'In Islam, days of fasting missed during Ramadan due to menstruation, pregnancy, nursing, or illness must be made up before the next Ramadan. pCycle lets you record these debts by year and reason, and track how many days you have completed.',
     example: 'Example: You missed 6 days of Ramadan 2025 due to your period. You log that debt. Each day you fast to make it up, you record it — the app shows your remaining balance.'
   },
   {
@@ -3361,7 +3361,7 @@ function HelpTab() {
       <div className="help-hero">
         <div className="help-hero-icon">📖</div>
         <div className="help-hero-title">Understanding Your Cycle</div>
-        <div className="help-hero-sub">Plain-language explanations for every term and concept in CycleTrack.</div>
+        <div className="help-hero-sub">Plain-language explanations for every term and concept in pCycle.</div>
       </div>
 
       {/* SECTION TABS */}
@@ -3459,7 +3459,7 @@ function HelpTab() {
       {/* TIPS */}
       {activeSection === 'tips' && (
         <div className="help-section">
-          <div className="help-section-header">💡 Getting the Most from CycleTrack</div>
+          <div className="help-section-header">💡 Getting the Most from pCycle</div>
           {TIPS.map((tip, i) => (
             <div key={i} className="help-tip">
               <div className="help-tip-icon">{tip.icon}</div>
@@ -3590,7 +3590,7 @@ function CongratCardModal({ cardData, userName, onClose }) {
     ctx.font = '20px Arial, sans-serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(dateStr, W/2, H - 54);
-    ctx.fillText('CycleTrack', W/2, H - 30);
+    ctx.fillText('pCycle', W/2, H - 30);
   }
 
   function centralInfo(ctx, W, totalGanti, tahun, bigColor, smallColor, unitColor) {
@@ -4297,7 +4297,7 @@ function App() {
   if (loadingInit) {
     return (
       <div className="app" style={{alignItems:'center',justifyContent:'center'}}>
-        <div className="login-logo" style={{marginBottom:'16px'}}>Cycle<span style={{color:'var(--plum)'}}>Track</span></div>
+        <div className="login-logo" style={{marginBottom:'16px'}}>p<span style={{color:'var(--plum)'}}>Cycle</span></div>
         <div className="spinner" />
       </div>
     );
@@ -4399,7 +4399,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/ptracker/sw.js', { scope: '/ptracker/' })
+      navigator.serviceWorker.register('/pcycle/sw.js', { scope: '/pcycle/' })
         .then(r => console.log('[SW] Registered:', r.scope))
         .catch(e => console.warn('[SW] Error:', e));
     });
