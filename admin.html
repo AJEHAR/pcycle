@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin — SK Pendidikan Khas Kuantan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <img class="school-logo" src="" alt="Logo Sekolah">
+      <div class="navbar-title">
+        SK Pendidikan Khas Kuantan
+        <small>Panel Pentadbiran</small>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="navbar-nav" id="navMenu">
+      <li><a href="index.html" data-lang="navSenarai">Senarai Fail</a></li>
+      <li><a href="admin.html" class="active" data-lang="navAdmin">Panel Admin</a></li>
+      <li>
+        <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
+      </li>
+    </ul>
+
+    <!-- Hamburger button (mobile) -->
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeMenu()"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <img class="school-logo drawer-logo" src="" alt="Logo">
+      <div class="drawer-school">
+        <strong>SK Pendidikan Khas Kuantan</strong>
+        <small>Panel Pentadbiran</small>
+      </div>
+      <button class="drawer-close" onclick="closeMenu()">✕</button>
+    </div>
+    <ul class="drawer-nav">
+      <li><a href="index.html" data-lang="navSenarai">Senarai Fail</a></li>
+      <li><a href="admin.html" class="active" data-lang="navAdmin">Panel Admin</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <button class="btn-lang-drawer" id="langToggleDrawer" onclick="toggleLang()">🌐 Tukar ke English</button>
+    </div>
+  </div>
+
+  <!-- ── HERO ── -->
+  <div class="admin-hero">
+    <h1 data-lang="adminTajuk">Panel Pentadbiran</h1>
+    <p data-lang="adminSub">Akses pentadbiran untuk mengurus fail PBD</p>
+  </div>
+
+  <!-- ── CONTENT ── -->
+  <div class="container">
+
+    <!-- Auth Card -->
+    <div class="auth-card">
+      <h3 data-lang="labelKey">Kata Kunci Rahsia</h3>
+      <div class="auth-row">
+        <input
+          type        = "password"
+          id          = "inputKey"
+          class       = "input-key"
+          data-ph     = "phKey"
+          placeholder = "Masukkan kata kunci..."
+          autocomplete= "off"
+        >
+        <button class="btn btn-primary" id="btnSahkan" data-lang="btnSahkan">Sahkan</button>
+      </div>
+      <p class="key-status" id="keyStatus"></p>
+    </div>
+
+    <!-- Admin Layout -->
+    <div class="admin-layout">
+
+      <!-- Kiri: Skop + Operasi -->
+      <div class="panel-left">
+
+        <!-- Skop -->
+        <div class="card">
+          <p class="card-title" data-lang="skopOperasi">Skop Operasi</p>
+          <div class="scope-row">
+            <select id="adminSem">
+              <option value="" data-lang="semAll">Semua Semester</option>
+            </select>
+            <select id="adminTahun">
+              <option value="" data-lang="tahunAll">Semua Tahun</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Operasi -->
+        <div class="card actions-card locked" id="actionsCard">
+          <p class="card-title" data-lang="operasi">Operasi</p>
+
+          <button class="action-btn" id="btnBuatFail">
+            <span class="action-icon">🆕</span>
+            <span class="action-text">
+              <span class="action-title" data-lang="btnBuatFail">Buat Fail Baru</span>
+              <span class="action-desc"  data-lang="descBuatFail">Cipta fail baru dari template</span>
+            </span>
+          </button>
+
+          <button class="action-btn" id="btnClearData">
+            <span class="action-icon">🗑️</span>
+            <span class="action-text">
+              <span class="action-title" data-lang="btnClearData">Kosong Data G3:BO</span>
+              <span class="action-desc"  data-lang="descClearData">Kosongkan data markah & ulasan</span>
+            </span>
+          </button>
+
+          <button class="action-btn" id="btnApdm">
+            <span class="action-icon">👤</span>
+            <span class="action-text">
+              <span class="action-title" data-lang="btnApdm">Sambung & Salin APDM</span>
+              <span class="action-desc"  data-lang="descApdm">Salin data pelajar dari APDM</span>
+            </span>
+          </button>
+
+          <button class="action-btn" id="btnClearSetup">
+            <span class="action-icon">🧹</span>
+            <span class="action-text">
+              <span class="action-title" data-lang="btnClearSetup">Padam SETUP E4:E</span>
+              <span class="action-desc"  data-lang="descClearSetup">Padam kolum E dalam tab SETUP</span>
+            </span>
+          </button>
+
+          <button class="action-btn" id="btnSemuaOps">
+            <span class="action-icon">🔄</span>
+            <span class="action-text">
+              <span class="action-title" data-lang="btnSemuaOps">Jalankan Semua Operasi</span>
+              <span class="action-desc"  data-lang="descSemuaOps">APDM + SETUP serentak</span>
+            </span>
+          </button>
+
+          <button class="action-btn" id="btnJanaPDF">
+            <span class="action-icon">📄</span>
+            <span class="action-text">
+              <span class="action-title" data-lang="btnJanaPDF">Jana Senarai PDF</span>
+              <span class="action-desc"  data-lang="descJanaPDF">Jana PDF dengan pautan boleh klik</span>
+            </span>
+          </button>
+
+          <button class="action-btn" id="btnShare">
+            <span class="action-icon">🔗</span>
+            <span class="action-text">
+              <span class="action-title" data-lang="btnShare">Share Fail ke Editor</span>
+              <span class="action-desc"  data-lang="descShare">Kongsikan akses kepada editor</span>
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Kanan: Keputusan + Log -->
+      <div class="panel-right">
+
+        <!-- Keputusan -->
+        <div class="card result-panel" id="resultPanel">
+          <p class="card-title" data-lang="keputusan">Keputusan Operasi</p>
+          <div class="result-body" id="resultBody"></div>
+        </div>
+
+        <!-- Log terkini -->
+        <div class="card">
+          <p class="card-title" data-lang="logTajuk">Log Aktiviti Terkini</p>
+          <div class="log-table-wrapper">
+            <table class="log-table">
+              <thead>
+                <tr>
+                  <th data-lang="colTarikh">Tarikh</th>
+                  <th data-lang="colMasa">Masa</th>
+                  <th data-lang="colFungsi">Fungsi</th>
+                  <th data-lang="colFail">Fail</th>
+                  <th data-lang="colStatus">Status</th>
+                </tr>
+              </thead>
+              <tbody id="logTable">
+                <tr><td colspan="5" class="empty">Memuatkan...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p data-lang="footer">Sistem Pengurusan Fail PBD © 2026 SK Pendidikan Khas Kuantan</p>
+  </footer>
+
+  <!-- Modal Confirm -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <p class="modal-msg" id="modalMsg"></p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="modalTidak">Batal</button>
+        <button class="btn btn-primary" id="modalYa">Ya, Teruskan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('drawer').classList.toggle('open');
+      document.getElementById('drawerOverlay').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('active');
+    }
+    function closeMenu() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('drawerOverlay').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
